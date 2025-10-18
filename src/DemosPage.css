@@ -291,15 +291,18 @@ body, html {
   .demos-page h1 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 
   .carousel-content {
     grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 90%;
   }
   
   .carousel-container {
     gap: 10px;
+    margin: 1rem 0;
   }
   
   .carousel-arrow {
@@ -310,16 +313,58 @@ body, html {
   .home-button-top {
     top: 10px;
     left: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 8px 16px;
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .home-button-top svg {
+    width: 16px;
+    height: 16px;
   }
   
   .project-card {
     padding: 15px;
+    min-height: auto;
+    max-width: 100%;
+  }
+
+  .project-card iframe {
+    height: 200px;
+  }
+
+  .dual-video-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .dual-video-container iframe {
+    height: 180px;
+  }
+
+  .project-info h3 {
+    font-size: 1.1em;
+  }
+
+  .project-info p {
+    font-size: 0.85em;
   }
   
   .content-container {
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
+    height: auto;
+    max-height: none;
+    justify-content: flex-start;
+  }
+
+  .carousel-dots {
+    margin-top: 1rem;
+  }
+
+  .carousel-counter {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
   }
 }

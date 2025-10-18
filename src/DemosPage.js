@@ -8,6 +8,16 @@ import './DemosPage.css';
 function DemosPage() {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
@@ -161,7 +171,7 @@ function DemosPage() {
     }
   ];
 
-  const itemsPerPage = 3;
+  const itemsPerPage = isMobile ? 1 : 3;
   const totalPages = Math.ceil(projects.length / itemsPerPage);
 
   const handlePrev = () => {

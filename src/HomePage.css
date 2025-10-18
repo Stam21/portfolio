@@ -27,7 +27,8 @@ body, html {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 10vh;
   z-index: 1;
 }
 p {
@@ -148,47 +149,95 @@ p {
   font-size: 1rem;
 }
 
+/* Mobile responsiveness - fit everything in one screen */
 @media (max-width: 768px) {
+  .home-page {
+    overflow: hidden;
+  }
+
+  .background-overlay {
+    min-height: 100vh;
+    overflow: hidden;
+    padding-top: 5vh;
+  }
+
   .content-container {
-    width: 95%; /* Wider on mobile */
-    padding: 1rem; /* Reduce padding */
+    width: 95%;
+    padding: 0.5rem;
+    justify-content: center;
+    max-height: 100vh;
+    overflow: hidden;
   }
 
   .profile-image-placeholder {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1.5rem;
-  }
-
-  h1 {
-    font-size: 1.8rem; /* Smaller font size */
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    border: 2px solid white;
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
   }
 
-
-}
-
-@media (max-width: 768px) {
-  .navigation-buttons {
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 15px;
+  .ai-section {
+    margin-bottom: 1rem;
   }
 
-  .demos-button, .cv-button {
-    width: 100%; /* Full-width buttons */
-    padding: 12px 15px; /* Larger touch target */
+  .ai-section p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    text-align: center;
   }
 
   .programming-skills {
-    flex-wrap: wrap; /* Allow wrapping */
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
+    margin-bottom: 1rem;
   }
 
   .programming-skills svg {
-    size: 40; /* Slightly smaller icons */
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .navigation-buttons-container {
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .navigation-buttons {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .demos-button, .cv-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    flex: 1;
+  }
+
+  .contact-links-section {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+  }
+
+  .contact-links-section p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-links-section div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .contact-links-section svg {
+    width: 25px !important;
+    height: 25px !important;
   }
 }

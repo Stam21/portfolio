@@ -6,6 +6,7 @@ import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
+import './CVPage.css';
 
 // Set up the worker with https
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -115,65 +116,18 @@ function CVPage() {
   }, []);
 
   return (
-    <div style={{ 
-      minHeight: '100vh',
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      paddingTop: '100px',
-      paddingBottom: '40px',
-      paddingLeft: '20px',
-      paddingRight: '20px',
-      boxSizing: 'border-box',
-      position: 'relative'
-    }}>
+    <div className="cv-page-container">
       <Particles
         id="tsparticles"
         init={particlesInit}
         options={particlesOptions}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: 0
-        }}
+        className="cv-particles"
       />
       <button 
+        className="cv-home-button"
         onClick={goToHome}
-        style={{
-          position: 'fixed',
-          top: '100px',
-          left: '100px',
-          padding: '12px 24px',
-          backgroundColor: '#60a5fa',
-          color: 'white',
-          border: '2px solid #60a5fa',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          fontSize: '18px',
-          fontWeight: 'bold',
-          transition: 'all 0.3s ease',
-          zIndex: 1000,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          boxShadow: '0 4px 6px rgba(96, 165, 250, 0.3)'
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.backgroundColor = 'transparent';
-          e.target.style.transform = 'translateY(-2px)';
-          e.target.style.boxShadow = '0 6px 12px rgba(96, 165, 250, 0.5)';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#60a5fa';
-          e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 4px 6px rgba(96, 165, 250, 0.3)';
-        }}
       >
-        <FaHome size={24} />
+        <FaHome size={window.innerWidth <= 768 ? 16 : 24} />
         Home
       </button>
 
@@ -203,7 +157,7 @@ function CVPage() {
             </a>
           </div>
         }
-        style={{ zIndex: 10, position: 'relative' }}
+        className="cv-document-container"
       >
         <Page 
           pageNumber={pageNumber}
@@ -214,7 +168,7 @@ function CVPage() {
       </Document>
       
       {numPages && (
-        <div style={{ color: 'white', marginTop: '10px', zIndex: 10, position: 'relative' }}>
+        <div className="cv-page-info">
           <p>Page {pageNumber} of {numPages}</p>
         </div>
       )}
