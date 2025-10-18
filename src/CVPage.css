@@ -1,0 +1,160 @@
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: 
+      linear-gradient(rgba(48, 0, 72, 0.9), rgba(48, 0, 72, 0.9)),
+      url('./assets/background3.jpg') center center / cover repeat-y fixed;
+    overflow-x: hidden;
+    overflow-y: auto; /* Add this to prevent potential vertical overflow */
+  }
+  
+  .cv-page {
+    color: white;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  
+  
+  .background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 2rem 0;
+  }
+  
+  .content-container {
+    max-width: 800px;
+    width: 90%;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    position: relative;
+    z-index: 10;
+  }
+  
+  h1, h2 {
+    color: white;
+    margin-bottom: 0.8rem;
+  }
+  
+  h3 {
+    color: #60a5fa;
+    margin-bottom: 0.5rem;
+    font-weight: normal; /* Less bold */
+  }
+  
+  .education-label {
+    color: #a0a0a0; /* Slightly muted color for the label */
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .education-section, .experience-section {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  .education-item, .experience-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .education-item p, 
+  .experience-item p, 
+  .education-item h3, 
+  .experience-item h3 {
+    color: white;
+    margin: 0.3rem 0;
+  }
+  
+  .experience-item ul {
+    padding-left: 1.5rem;
+    color: white;
+  }
+  
+  .navigation-buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 2rem;
+  }
+  
+  .navigation-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 1rem;
+  }
+  
+  .home-button {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .background-overlay {
+      padding: 1rem 0;
+    }
+  
+    .content-container {
+      width: 95%;
+      padding: 1rem;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    h3 {
+      font-size: 1.2rem;
+    }
+  
+    p {
+      font-size: 0.9rem;
+    }
+  
+    .navigation-buttons {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .home-button {
+      width: 100%;
+      padding: 12px 15px;
+    }
+  }
