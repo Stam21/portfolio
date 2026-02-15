@@ -1,23 +1,12 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaArrowRight, FaHome } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 import './DemosPage.css';
 
 function DemosPage() {
   const navigate = useNavigate();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
@@ -171,22 +160,6 @@ function DemosPage() {
     }
   ];
 
-  const itemsPerPage = isMobile ? 1 : 3;
-  const totalPages = Math.ceil(projects.length / itemsPerPage);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
-  };
-
-  const getCurrentProjects = () => {
-    const start = currentIndex * itemsPerPage;
-    return projects.slice(start, start + itemsPerPage);
-  };
-
   return (
     <div className="demos-page">
       <Particles
@@ -207,62 +180,39 @@ function DemosPage() {
 
           <h1>Projects</h1>
           
-          <div className="carousel-container">
-            <button className="carousel-arrow left" onClick={handlePrev}>
-              <FaArrowLeft size={30} />
-            </button>
-
-            <div className="carousel-content">
-              {getCurrentProjects().map((project) => (
-                <div key={project.id} className="project-card">
-                  {project.videos ? (
-                    <div className="dual-video-container">
-                      {project.videos.map((video, idx) => (
-                        <iframe 
-                          key={idx}
-                          src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1&hd=1`}
-                          title={`${project.title} - Part ${idx + 1}`}
-                          frameBorder="0" 
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                          allowFullScreen
-                        ></iframe>
-                      ))}
-                    </div>
-                  ) : (
-                    <iframe 
-                      src={`https://www.youtube.com/embed/${project.videoId}?rel=0&modestbranding=1&hd=1`}
-                      title={project.title}
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                    ></iframe>
-                  )}
-                  <div className="project-info">
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <div key={project.id} className="project-card">
+                {project.videos ? (
+                  <div className="dual-video-container">
+                    {project.videos.map((video, idx) => (
+                      <iframe 
+                        key={idx}
+                        src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1&hd=1`}
+                        title={`${project.title} - Part ${idx + 1}`}
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen
+                      ></iframe>
+                    ))}
                   </div>
+                ) : (
+                  <iframe 
+                    src={`https://www.youtube.com/embed/${project.videoId}?rel=0&modestbranding=1&hd=1`}
+                    title={project.title}
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen
+                  ></iframe>
+                )}
+                <div className="project-info">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
                 </div>
-              ))}
-            </div>
-
-            <button className="carousel-arrow right" onClick={handleNext}>
-              <FaArrowRight size={30} />
-            </button>
-          </div>
-
-          <div className="carousel-dots">
-            {[...Array(totalPages)].map((_, idx) => (
-              <span 
-                key={idx}
-                className={`dot ${idx === currentIndex ? 'active' : ''}`}
-                onClick={() => setCurrentIndex(idx)}
-              ></span>
+              </div>
             ))}
           </div>
 
-          <div className="carousel-counter">
-            Page {currentIndex + 1} of {totalPages}
-          </div>
         </div>
       </div>
     </div>

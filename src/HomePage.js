@@ -94,10 +94,6 @@ function HomePage() {
     navigate('/demos');
   };
 
-  const goToCV = () => {
-    navigate('/cv');
-  };
-
   const contactIconStyle = {
     color: '#ffffff', 
     marginRight: '15px',
@@ -149,12 +145,6 @@ function HomePage() {
                 onClick={goToDemos}
               >
                 Projects
-              </button>
-              <button 
-                className="cv-button" 
-                onClick={goToCV}
-              >
-                CV
               </button>
             </div>
           </div>

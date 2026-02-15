@@ -1,14 +1,14 @@
 .demos-page {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .particles-background {
-  position: absolute !important;
+  position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
@@ -20,33 +20,29 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
 }
 
-.background-overlay {
-  position: absolute;
+.demos-page .background-overlay {
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  align-items: flex-start;
   z-index: 1;
 }
 
-.content-container {
-  max-width: 1400px;
-  width: 95%;
-  padding: 1rem;
+.demos-page .content-container {
+  max-width: 100%;
+  width: 98%;
+  padding: 2rem 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  height: 100%;
-  justify-content: center;
 }
 
 .demos-page h1 {
@@ -57,8 +53,8 @@ body, html {
 }
 
 .home-button-top {
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 20px;
   left: 20px;
   padding: 12px 24px;
   background-color: #60a5fa;
@@ -84,22 +80,13 @@ body, html {
   box-shadow: 0 6px 12px rgba(96, 165, 250, 0.5);
 }
 
-/* Carousel Styles */
-.carousel-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+/* Projects Grid Styles */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
   width: 100%;
   margin: 2rem 0;
-}
-
-.carousel-content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  width: 100%;
-  max-width: 1400px;
 }
 
 .project-card {
@@ -156,61 +143,7 @@ body, html {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.carousel-arrow {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: white;
-  flex-shrink: 0;
-}
-
-.carousel-arrow:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  transform: scale(1.1);
-}
-
-.carousel-arrow:active {
-  transform: scale(0.95);
-}
-
-.carousel-dots {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background-color: white;
-  transform: scale(1.3);
-}
-
-.dot:hover {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
-.carousel-counter {
-  color: white;
-  font-size: 1.1em;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-}
+/* Legacy styles kept for potential reuse */
 
 .youtube-videos {
   margin-bottom: 3rem;
@@ -268,20 +201,9 @@ body, html {
 
 
 /* Responsive design */
-@media (max-width: 1024px) {
-  .carousel-content {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .carousel-arrow {
-    width: 50px;
-    height: 50px;
-  }
-}
-
 @media (max-width: 768px) {
   .demos-page,
-  .background-overlay {
+  .demos-page .background-overlay {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -294,20 +216,9 @@ body, html {
     margin-top: 1rem;
   }
 
-  .carousel-content {
+  .projects-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-    max-width: 90%;
-  }
-  
-  .carousel-container {
-    gap: 10px;
-    margin: 1rem 0;
-  }
-  
-  .carousel-arrow {
-    width: 45px;
-    height: 45px;
   }
   
   .home-button-top {
@@ -350,21 +261,8 @@ body, html {
     font-size: 0.85em;
   }
   
-  .content-container {
+  .demos-page .content-container {
     width: 100%;
     padding: 0.5rem;
-    height: auto;
-    max-height: none;
-    justify-content: flex-start;
-  }
-
-  .carousel-dots {
-    margin-top: 1rem;
-  }
-
-  .carousel-counter {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
   }
 }
