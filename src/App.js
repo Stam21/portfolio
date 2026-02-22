@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './HomePage';
 import DemosPage from './DemosPage';
-import CVPage from './CVPage';
 
 function App() {
   return (
